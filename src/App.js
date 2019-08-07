@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Menu from "./Menu";
-import CharacterSearch from "./CharacterSearch";
-import SeriesSearch from "./SeriesSearch";
-import "./App.css";
+import Menu from "./components/Menu";
+import CharacterSearch from "./components/CharacterSearch";
+import SeriesSearch from "./components/SeriesSearch";
+import "./styles/App.css";
 
 class App extends Component {
   constructor(props) {

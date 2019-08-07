@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./marvel-logo.jpg";
+import logo from "../assets/marvel-logo.jpg";
 
 function renderMenu({ switchToCharacterSearch, switchToSeriesSearch }) {
   return (
