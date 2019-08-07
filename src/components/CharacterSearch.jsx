@@ -1,22 +1,20 @@
 import React, { Component } from "react";
+import SearchForm from "./SearchForm";
 
 export default class CharacterSearch extends Component {
   constructor(props) {
     super(props);
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     this.state = {
-      searchInput: ""
+      displayContent: ""
     };
   }
 
-  handleInputChange(event) {
-    this.setState({ searchInput: event.target.value });
-  }
+  handleSearch(searchTerm) {
+    // do axios request logic here (maybe start w/ request-promise & switch to axios)
+    // need to use search Term as a query parameter
 
-  handleSearch(event) {
-    event.preventDefault();
-
-    // search w/ this.state.searchInput
+    return this.setState({ displayContent: searchTerm });
   }
 
   render() {
@@ -25,17 +23,9 @@ export default class CharacterSearch extends Component {
       <>
         <h1>Character Search</h1>
         <button onClick={() => switchToMenu()}>Back To Menu</button>
-        <form>
-          <input
-            type="text"
-            placeholder="Search a character"
-            value={this.state.searchInput}
-            onChange={e => {
-              this.handleInputChange(e);
-            }}
-          />
-          <button onClick={e => this.handleSearch(e)}>Search</button>
-        </form>
+        <SearchForm handleSearch={this.handleSearch} />
+        <h3>axios request w/ following params:</h3>
+        <h1>{this.state.displayContent || "..."}</h1>
       </>
     );
   }
