@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+// import httpRequestAdapter from "../httpRequestAdapter";
 import { marvelApiKey } from "../config";
 import SearchForm from "./SearchForm";
 
@@ -16,6 +17,10 @@ export default class SeriesSearch extends Component {
   }
 
   handleSearch(searchTerm) {
+    // const path = "series";
+    // const queryParameters = `title=${searchTerm}`;
+    // httpRequestAdapter
+    //   .get(path, queryParameters)
     axios
       .get(
         `https://gateway.marvel.com:443/v1/public/series?title=${searchTerm}&apikey=${marvelApiKey}`

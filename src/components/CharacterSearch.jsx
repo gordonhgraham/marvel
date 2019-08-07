@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+// import httpRequestAdapter from "../httpRequestAdapter";
 import SearchForm from "./SearchForm";
 import { marvelApiKey } from "../config";
-import { log } from "handlebars";
 
 export default class CharacterSearch extends Component {
   constructor(props) {
@@ -18,6 +18,10 @@ export default class CharacterSearch extends Component {
   }
 
   handleSearch(searchTerm) {
+    // const path = "characters";
+    // const queryParameters = `name=${searchTerm}`;
+    // httpRequestAdapter
+    //   .get(path, queryParameters)
     axios
       .get(
         `https://gateway.marvel.com:443/v1/public/characters?name=${searchTerm}&apikey=${marvelApiKey}`
