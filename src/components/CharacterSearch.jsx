@@ -37,7 +37,6 @@ export default class CharacterSearch extends Component {
     const {
       name,
       description,
-      thumbnail,
       thumbnail: { path, extension }
     } = this.state.displayContent;
     return (
@@ -47,11 +46,8 @@ export default class CharacterSearch extends Component {
         <SearchForm handleSearch={this.handleSearch} />
         <h1>{name}</h1>
         <h3>{description}</h3>
+        <img src={`${path}.${extension}`} alt="" style={{ height: 400 }} />
       </>
     );
   }
 }
-
-// {thumbnail.length > 0 ? (
-//   <img src={`${path}.${extension}`} className="App-logo" alt="logo" />
-//     ) : null}
