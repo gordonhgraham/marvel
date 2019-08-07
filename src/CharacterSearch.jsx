@@ -7,10 +7,11 @@ export default class CharacterSearch extends Component {
   }
 
   render() {
+    const { switchToMenu } = this.props;
     return (
       <>
         <h1>Character Search</h1>
-        <button onClick={() => this.props.returnToMenu()}>Back To Menu</button>
+        <button onClick={() => switchToMenu()}>Back To Menu</button>
       </>
     );
   }

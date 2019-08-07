@@ -7,10 +7,11 @@ export default class SeriesSearch extends Component {
   }
 
   render() {
+    const { switchToMenu } = this.props;
     return (
       <>
         <h1>Series Search</h1>
-        <button onClick={() => this.props.returnToMenu()}>Back To Menu</button>
+        <button onClick={() => switchToMenu()}>Back To Menu</button>
       </>
     );
   }

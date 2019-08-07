@@ -7,35 +7,37 @@ import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.selectNewComponent = this.selectNewComponent.bind(this);
+    this.switchToMenu = this.switchToMenu.bind(this);
+    this.switchToCharacterSearch = this.switchToCharacterSearch.bind(this);
+    this.switchToSeriesSearch = this.switchToSeriesSearch.bind(this);
     this.state = { selectedComponent: "menu" };
   }
 
-  selectNewComponent(newSelection) {
-    this.setState({ selectedComponent: newSelection });
+  switchToMenu() {
+    this.setState({ selectedComponent: "menu" });
+  }
+
+  switchToCharacterSearch() {
+    this.setState({ selectedComponent: "characterSearch" });
+  }
+
+  switchToSeriesSearch() {
+    this.setState({ selectedComponent: "seriesSearch" });
   }
 
   renderContent() {
     const { selectedComponent } = this.state;
     switch (selectedComponent) {
       case "characterSearch":
-        return (
-          <CharacterSearch
-            returnToMenu={() => this.selectNewComponent("menu")}
-          />
-        );
+        return <CharacterSearch switchToMenu={this.switchToMenu} />;
       case "seriesSearch":
-        return (
-          <SeriesSearch returnToMenu={() => this.selectNewComponent("menu")} />
-        );
+        return <SeriesSearch switchToMenu={this.switchToMenu} />;
       case "menu":
       default:
         return (
           <Menu
-            renderCharacterSearch={() =>
-              this.selectNewComponent("characterSearch")
-            }
-            renderSeriesSearch={() => this.selectNewComponent("SeriesSearch")}
+            switchToCharacterSearch={this.switchToCharacterSearch}
+            switchToSeriesSearch={this.switchToSeriesSearch}
           />
         );
     }
@@ -51,31 +53,3 @@ class App extends Component {
 }
 
 export default App;
-
-// const marvelUrl = `https://gateway.marvel.com:443/v1/public/characters?name=thanos&apikey=${apiKey}`;
-
-// const marvelClient = axios.create({
-//   method: "GET",
-//   baseURL: marvelUrl
-// });
-
-// function getCharacters() {
-//   marvelClient.get().then(res => {
-//     console.log("<=> <=><=> <=> <=> <=><=> <=> <=> <=><=> <=>");
-//     console.log("res.data: ", res.data);
-//     console.log("<=> <=><=> <=> <=> <=><=> <=> <=> <=><=> <=>");
-//   });
-// }
-
-// eslint-disable-next-line no-lone-blocks
-{
-  /* <img src={logo} className="App-logo" alt="logo" />
-        <img
-          src={"http://i.annihil.us/u/prod/marvel/i/mg/6/40/5274137e3e2cd.jpg"}
-          className="App-logo"
-          alt="logo"
-        />
-        <button onClick={() => getCharacters()}>
-          Click here for a random marvel character
-        </button> */
-}
